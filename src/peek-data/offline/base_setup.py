@@ -45,6 +45,10 @@ reference.coords['position'].fields.y += pixel_position_correction(reference)
 sample.attrs['orso'].value.data_source.measurement.comment = 'Pixel positions corrected'
 reference.attrs['orso'].value.data_source.measurement.comment = 'Pixel positions corrected'
 sample.hist(tof=40).plot().save('assets/sample_raw_2d.png')
+
+plotting_graph = {"plot": lambda sample: sample.hist(tof=40)}
+
+
 graph = amor.conversions.specular_reflection()
 sc.show_graph(graph, simplified=True).render('assets/workflow_graph', format='png')
 
