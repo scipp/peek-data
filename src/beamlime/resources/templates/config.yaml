@@ -1,0 +1,49 @@
+# SPDX-License-Identifier: BSD-3-Clause
+# Copyright (c) 2023 Scipp contributors (https://github.com/scipp)
+# @author Sunyoung Yoo
+#
+# Dependencies on other templates: data-stream-interface.yaml,
+#                                  data-stream-mapping.yaml,
+#                                  target.yaml,
+#                                  workflow.yaml
+
+general:
+  user:
+  name:
+  last-updated:
+  root-dir: "~/.beamlime/"
+  log-dir: "~/.beamlime/log/"
+
+dashboard:
+  update-frequency: 5 # [Hz]
+
+data-stream:
+  interfaces: # Each interface will be run in different process if possible.
+    # - name: interface-name-1
+    #   ...
+    # - name: interface-name-2
+    #   ...
+    # - name: interface-name-3
+    #   ...
+  interface-mapping: # Define communication between interfaces here.
+    # - from: interface-name-1
+    #   to:
+    #       - interface-name-2
+    #       - interface-name-3
+  custom-handler-dir: "~/.beamlime/custom-handlers/"
+
+data-reduction: # Each workflow will be run asynchronously but in one process.
+                # Can be split into multi-processes by the data-reduction-manager instance if needed.
+  workflow-target-mapping:
+    - workflow: # workflow-name-1
+      targets:
+        #  - target-name-1
+        #  - target-name-2
+  targets:
+    # - name: target-name-1
+    #   index: ''
+    # - name: target-name-2
+    #   index: geometry
+  workflows:
+    # - name: workflow-name-1
+    #   ...
